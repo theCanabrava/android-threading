@@ -9,14 +9,24 @@ import com.example.androidthreading.databinding.ActivityLoginBinding
 import com.example.androidthreading.process.HeavyProcess
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.concurrent.Executor
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import java.util.concurrent.*
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
+    private val NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors()
+    private val workQueue: BlockingQueue<Runnable> = LinkedBlockingQueue()
+    private val KEEP_ALIVE_TIME = 1L
+    private val KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS
+    private val threadPoolExecutor = ThreadPoolExecutor(
+        NUMBER_OF_CORES,
+        NUMBER_OF_CORES,
+        KEEP_ALIVE_TIME,
+        KEEP_ALIVE_TIME_UNIT,
+        workQueue
+    )
+
+    //private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
     private  val mainThreadHandler: Handler = HandlerCompat.createAsync(Looper.getMainLooper())
 
 
@@ -31,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login()
     {
-        executorService.execute {
+        threadPoolExecutor.execute {
             val result = syncLogin()
             mainThreadHandler.post { loginCallback(result) }
         }
