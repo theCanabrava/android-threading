@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import com.example.androidthreading.databinding.ActivityMainBinding
+import com.example.androidthreading.process.HeavyProcess
 import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
@@ -39,12 +40,12 @@ class MainActivity : AppCompatActivity() {
             val weight = binding.weightText.text.toString().toInt()
             if(binding.onMain.isChecked)
             {
-                binding.result.text = getString(R.string.result, heavyProcess(weight))
+                binding.result.text = getString(R.string.result, HeavyProcess.run(weight))
             }
             else
             {
                 Thread {
-                    val result = heavyProcess(weight)
+                    val result = HeavyProcess.run(weight)
                     runOnUiThread {  binding.result.text = getString(R.string.result, result) }
                 }.start()
             }
@@ -53,12 +54,5 @@ class MainActivity : AppCompatActivity() {
         binding.toLoginButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
-    }
-
-    private fun heavyProcess(weight: Int): Int
-    {
-        var result = 0
-        for(i in 1..weight) for(j in 1..weight) result += 1
-        return result
     }
 }

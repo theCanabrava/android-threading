@@ -13,4 +13,7 @@
     <string name="password_hint">Password</string>
     <string name="login_condition">*Any username/password combination will be approved</string>
     <string name="login">Login</string>
+    <string name="loading">Loading...</string>
+    <string name="login_was">Login was: %s.</string>
+    <string name="empty"> </string>
 </resources>
