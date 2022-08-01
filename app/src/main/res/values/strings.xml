@@ -7,6 +7,10 @@
     <string name="result">Calculated Result: %d</string>
     <string name="to_login">Go to simulated login</string>
 
-    <string name="username">Username</string>
-    <string name="password">Password</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="username_hint">User name</string>
+    <string name="password_hint">Password</string>
+    <string name="login_condition">*Any username/password combination will be approved</string>
+    <string name="login">Login</string>
 </resources>

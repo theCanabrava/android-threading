@@ -54,7 +54,6 @@
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
         android:text="@string/result"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,11 +61,11 @@
         app:layout_constraintTop_toBottomOf="@+id/runButton" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/toLoginButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/to_login"
         app:layout_constraintEnd_toEndOf="@+id/runButton"
         app:layout_constraintStart_toStartOf="@+id/runButton"
-        tools:layout_editor_absoluteY="181dp" />
+        app:layout_constraintTop_toBottomOf="@+id/runButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

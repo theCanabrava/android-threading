@@ -1,5 +1,6 @@
 package com.example.androidthreading
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -47,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                     runOnUiThread {  binding.result.text = getString(R.string.result, result) }
                 }.start()
             }
+        }
+
+        binding.toLoginButton.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 
