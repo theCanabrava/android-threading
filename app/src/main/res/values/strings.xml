@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Android Threading</string>
+    <string name="weight">Subprocess weight:</string>
+    <string name="weight_hint">Subprocess weight</string>
+    <string name="run_on_main">Run on main thread</string>
+    <string name="run">Run</string>
+    <string name="result">Calculated Result: %d</string>
+    <string name="to_login">Go to simulated login</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+</resources>
