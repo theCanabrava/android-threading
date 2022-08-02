@@ -18,6 +18,7 @@ class WorkerActivity : AppCompatActivity() {
 
         binding.doWork.setOnClickListener { simpleWork() }
         binding.doPeriodicWork.setOnClickListener { periodicWork() }
+        binding.doUniqueWork.setOnClickListener { uniqueWork() }
     }
 
     private fun simpleWork()
@@ -43,4 +44,18 @@ class WorkerActivity : AppCompatActivity() {
             .getInstance(this)
             .enqueue(request)
     }
+
+    private fun uniqueWork()
+    {
+        val customWorkRequest: OneTimeWorkRequest =
+            OneTimeWorkRequestBuilder<CustomWorker>()
+                .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
+                .build()
+
+        WorkManager
+            .getInstance(this)
+            .enqueueUniqueWork("unique", ExistingWorkPolicy.KEEP, customWorkRequest)
+    }
+
+
 }

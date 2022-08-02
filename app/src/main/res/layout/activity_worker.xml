@@ -36,4 +36,13 @@
         app:layout_constraintEnd_toEndOf="@+id/doWork"
         app:layout_constraintStart_toStartOf="@+id/doWork"
         app:layout_constraintTop_toBottomOf="@+id/doWork" />
+
+    <Button
+        android:id="@+id/doUniqueWork"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/do_unique_work"
+        app:layout_constraintEnd_toEndOf="@+id/doPeriodicWork"
+        app:layout_constraintStart_toStartOf="@+id/doPeriodicWork"
+        app:layout_constraintTop_toBottomOf="@+id/doPeriodicWork" />
 </androidx.constraintlayout.widget.ConstraintLayout>

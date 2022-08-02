@@ -11,7 +11,7 @@ class CustomWorker(appContext: Context, workerParams: WorkerParameters):
 {
     private val tag = "CUSTOM_WORKER"
     override fun doWork(): Result {
-        val result = HeavyProcess.run(10000)
+        val result = HeavyProcess.run(100000)
         Log.d(tag, "Custom worker finished with result: $result")
         return Result.success()
     }

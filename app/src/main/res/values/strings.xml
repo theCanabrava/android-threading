@@ -22,5 +22,6 @@
 
     <string name="do_work">Do work</string>
     <string name="do_periodic_work">Do periodic work</string>
+    <string name="do_unique_work">Do unique work</string>
     <string name="work_result">Work will log to console on completion</string>
 </resources>
