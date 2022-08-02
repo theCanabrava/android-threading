@@ -27,4 +27,13 @@
         android:text="@string/work_result"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/doPeriodicWork"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/do_periodic_work"
+        app:layout_constraintEnd_toEndOf="@+id/doWork"
+        app:layout_constraintStart_toStartOf="@+id/doWork"
+        app:layout_constraintTop_toBottomOf="@+id/doWork" />
 </androidx.constraintlayout.widget.ConstraintLayout>
