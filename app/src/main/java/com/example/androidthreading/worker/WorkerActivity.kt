@@ -2,13 +2,16 @@ package com.example.androidthreading.worker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.work.*
 import com.example.androidthreading.databinding.ActivityWorkerBinding
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class WorkerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWorkerBinding
+    private var periodicWorkId: UUID? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +22,7 @@ class WorkerActivity : AppCompatActivity() {
         binding.doWork.setOnClickListener { simpleWork() }
         binding.doPeriodicWork.setOnClickListener { periodicWork() }
         binding.doUniqueWork.setOnClickListener { uniqueWork() }
+        binding.cancelPeriodicWork.setOnClickListener { cancelPeriodicWork() }
     }
 
     private fun simpleWork()
@@ -36,6 +40,7 @@ class WorkerActivity : AppCompatActivity() {
             PeriodicWorkRequestBuilder<CustomWorker>(20, TimeUnit.MINUTES)
                 .build()
         enqueue(periodicWorkRequest)
+        periodicWorkId = periodicWorkRequest.id
     }
 
     private fun enqueue(request: WorkRequest)
@@ -43,6 +48,16 @@ class WorkerActivity : AppCompatActivity() {
         WorkManager
             .getInstance(this)
             .enqueue(request)
+
+        WorkManager
+            .getInstance(this)
+            .getWorkInfoByIdLiveData(request.id)
+            .observe(this) {
+                if(it.state == WorkInfo.State.SUCCEEDED)
+                {
+                    Toast.makeText(this, "Work completed", Toast.LENGTH_LONG).show()
+                }
+            }
     }
 
     private fun uniqueWork()
@@ -57,5 +72,12 @@ class WorkerActivity : AppCompatActivity() {
             .enqueueUniqueWork("unique", ExistingWorkPolicy.KEEP, customWorkRequest)
     }
 
+    private fun cancelPeriodicWork()
+    {
+        if(periodicWorkId !== null)
+        {
+            WorkManager.getInstance(this).cancelWorkById(periodicWorkId!!)
+        }
+    }
 
 }

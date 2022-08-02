@@ -45,4 +45,13 @@
         app:layout_constraintEnd_toEndOf="@+id/doPeriodicWork"
         app:layout_constraintStart_toStartOf="@+id/doPeriodicWork"
         app:layout_constraintTop_toBottomOf="@+id/doPeriodicWork" />
+
+    <Button
+        android:id="@+id/cancelPeriodicWork"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_periodic_work"
+        app:layout_constraintEnd_toEndOf="@+id/doUniqueWork"
+        app:layout_constraintStart_toStartOf="@+id/doUniqueWork"
+        app:layout_constraintTop_toBottomOf="@+id/doUniqueWork" />
 </androidx.constraintlayout.widget.ConstraintLayout>
