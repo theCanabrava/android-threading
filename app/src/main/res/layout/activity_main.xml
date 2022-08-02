@@ -55,10 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/result"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/runButton" />
+        app:layout_constraintTop_toBottomOf="@+id/toLoginButton" />
 
     <Button
         android:id="@+id/toLoginButton"
@@ -68,4 +67,13 @@
         app:layout_constraintEnd_toEndOf="@+id/runButton"
         app:layout_constraintStart_toStartOf="@+id/runButton"
         app:layout_constraintTop_toBottomOf="@+id/runButton" />
+
+    <Button
+        android:id="@+id/generateBroadcast"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/generate_broadcast"
+        app:layout_constraintEnd_toEndOf="@+id/toLoginButton"
+        app:layout_constraintStart_toStartOf="@+id/toLoginButton"
+        app:layout_constraintTop_toBottomOf="@+id/result" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import kotlin.math.floor
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val broadcastUrl = "com.example.androidthreading.MY_NOTIFICATION"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,23 +39,29 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        binding.runButton.setOnClickListener {
-            val weight = binding.weightText.text.toString().toInt()
-            if(binding.onMain.isChecked)
-            {
-                binding.result.text = getString(R.string.result, HeavyProcess.run(weight))
-            }
-            else
-            {
-                Thread {
-                    val result = HeavyProcess.run(weight)
-                    runOnUiThread {  binding.result.text = getString(R.string.result, result) }
-                }.start()
-            }
-        }
+        binding.runButton.setOnClickListener { runHeavyCalculation() }
 
         binding.toLoginButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+        binding.generateBroadcast.setOnClickListener { sendBroadcastMessage() }
+    }
+
+    private fun runHeavyCalculation()
+    {
+
+        val weight = binding.weightText.text.toString().toInt()
+        if(binding.onMain.isChecked)
+        {
+            binding.result.text = getString(R.string.result, HeavyProcess.run(weight))
+        }
+        else
+        {
+            Thread {
+                val result = HeavyProcess.run(weight)
+                runOnUiThread {  binding.result.text = getString(R.string.result, result) }
+            }.start()
         }
     }
 
@@ -63,7 +70,17 @@ class MainActivity : AppCompatActivity() {
         val br = MyBroadcastReceiver()
         val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION).apply {
             addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+            addAction(broadcastUrl)
         }
         registerReceiver(br, filter)
+    }
+
+    private fun sendBroadcastMessage()
+    {
+        Intent().also {
+            it.action = broadcastUrl
+            it.putExtra("data", "Nothing to see here, move along")
+            sendBroadcast(it)
+        }
     }
 }
