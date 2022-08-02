@@ -1,5 +1,6 @@
 package com.example.androidthreading
 
+import android.Manifest
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
@@ -9,6 +10,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.example.androidthreading.databinding.ActivityMainBinding
 import com.example.androidthreading.process.HeavyProcess
+import com.example.androidthreading.worker.WorkerActivity
 import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
@@ -43,6 +45,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.toLoginButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+        }
+        binding.toWorkManager.setOnClickListener {
+            startActivity(Intent(this, WorkerActivity::class.java))
         }
 
         binding.generateBroadcast.setOnClickListener { sendBroadcastMessage() }

@@ -45,6 +45,7 @@
         android:id="@+id/runButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/run"
         app:layout_constraintEnd_toEndOf="@+id/onMain"
         app:layout_constraintStart_toStartOf="@+id/onMain"
@@ -76,4 +77,13 @@
         app:layout_constraintEnd_toEndOf="@+id/toLoginButton"
         app:layout_constraintStart_toStartOf="@+id/toLoginButton"
         app:layout_constraintTop_toBottomOf="@+id/result" />
+
+    <Button
+        android:id="@+id/toWorkManager"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/work_manager"
+        app:layout_constraintEnd_toEndOf="@+id/generateBroadcast"
+        app:layout_constraintStart_toStartOf="@+id/generateBroadcast"
+        app:layout_constraintTop_toBottomOf="@+id/generateBroadcast" />
 </androidx.constraintlayout.widget.ConstraintLayout>

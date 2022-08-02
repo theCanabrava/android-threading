@@ -13,8 +13,13 @@
     <string name="password_hint">Password</string>
     <string name="login_condition">*Any username/password combination will be approved</string>
     <string name="login">Login</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="login_was">Login was: %s.</string>
     <string name="empty"> </string>
     <string name="generate_broadcast">Generate Broadcast</string>
+    <string name="work_manager">Work Manager</string>
+
+
+    <string name="do_work">Do work</string>
+    <string name="work_result">Work result is: %d</string>
 </resources>
