@@ -24,5 +24,7 @@
     <string name="do_periodic_work">Do periodic work</string>
     <string name="do_unique_work">Do unique work</string>
     <string name="cancel_periodic_work">Cancel periodic work</string>
+    <string name="do_progress_work">Do progress work</string>
+    <string name="progress_is">Progress is: %d</string>
     <string name="work_result">Work will log to console on completion</string>
 </resources>
